@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class Pedido {
     ArrayList<Cadastro> myCadastro = new ArrayList<>();
 
-    public void novaVenda(String id, String descricao, int valor, FormaPagamento formaPagamento, Estado estado){
+    public void novaVenda(String id, String descricao, float valor, FormaPagamento formaPagamento, Estado estado){
         myCadastro.add(new Cadastro(id, descricao, valor, formaPagamento, estado));
 
     }
