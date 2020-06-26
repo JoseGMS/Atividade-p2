@@ -22,6 +22,18 @@ public class Cadastro {
         return id;
     }
 
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public float getValor() {
+        return valor;
+    }
+
+    public FormaPagamento getFormaPagamento() {
+        return formaPagamento;
+    }
+
     public Estado getEstado() {
         return estado;
     }
