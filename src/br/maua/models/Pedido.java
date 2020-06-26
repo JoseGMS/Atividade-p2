@@ -3,7 +3,7 @@ package br.maua.models;
 import br.maua.enumerates.Estado;
 import br.maua.enumerates.FormaPagamento;
 
-/**
+/**Classe responsavel por gerar novos pedidos e também a lista de pedidos.
  * @author José Guilherme Martins dos Santos - josegms2000@gmail.com
  * @since 26/06/2020
  * @version 1.o
@@ -14,10 +14,14 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Pedido {
-    ArrayList<Cadastro> myCadastro = new ArrayList<>();
+    ArrayList<Cadastro> novoCadastro = new ArrayList<>();
     private Estado estadoAtual;
 
     private FormaPagamento pagamentoAtual;
+
+    /**
+     * @return Gerador de id randomico para novos pedidos.
+     */
     private String geradorId(){
         Random random = new Random();
         String idGerado = "";
@@ -25,6 +29,12 @@ public class Pedido {
             idGerado += random.nextInt(10);
             return idGerado;
     }
+
+    /**
+     * Função que executa uma nova venda. <br>
+     *     Responsavel por leitura de descrição,valor, forma de pagamento e estado do pedido.
+     *     As descrições e valores são lidos como string e float respectivamente, forma de pagamente possui um switch case com as cinco opções e o estado e setado com realizado.
+     */
     public void novaVenda() {
         Scanner des = new Scanner(System.in);
         System.out.println("Digite a descrição: ");
@@ -52,14 +62,23 @@ public class Pedido {
                 pagamentoAtual = FormaPagamento.VALE_REFEICAO;
                 break;
         }
-        myCadastro.add(new Cadastro(geradorId(), descricao, valor, pagamentoAtual, Estado.REALIZADO));
+        novoCadastro.add(new Cadastro(geradorId(), descricao, valor, pagamentoAtual, Estado.REALIZADO));
     }
 
+    /**
+     * Função responsavel por exibir pedidos cadastrados.<br>
+     *     for que percorre a lista de novos cadastro e print eles de forma organizada.
+     */
     public void mostraPedidos(){
-        for (Cadastro pedido: myCadastro)
+        for (Cadastro pedido: novoCadastro)
             System.out.println(" -----------------------\nOs pedidos atuais são: \nId: " + pedido.getId() + "\nDescrição: " + pedido.getDescricao() + "\nValor: " + pedido.getValor() + "\nForma de Pagamento: " + pedido.getFormaPagamento() + "\nEstado: " + pedido.getEstado() + "\n-----------------------");
     }
 
+    /**
+     * Função responvel por alterar estado de pedidos já feitos anteriormente.<br>
+     *     Pergunta ao funcionario qual o id do pedido que deseja alterar e por qual estado e executada a troca.
+     *     A troca e feita por meio de uma varredura da lista comparando o id digitado pelo funcionario com os ids cadastrados.
+     */
     public void alterarPedidos(){
         Scanner id1 = new Scanner(System.in);
         System.out.println("Digite o id do pedido que deseja alterar: ");
@@ -85,9 +104,11 @@ public class Pedido {
                 break;
         }
 
-        for (Cadastro pedido: myCadastro) {
-            if(id.equals(pedido.getId()))
-            pedido.setEstado(estadoAtual);
+        for (Cadastro pedido: novoCadastro) {
+            if(id.equals(pedido.getId())) {
+                pedido.setEstado(estadoAtual);
+                System.out.println("\nEstado do pedido alterado com sucesso!\n");
+            }
         }
     }
 }
