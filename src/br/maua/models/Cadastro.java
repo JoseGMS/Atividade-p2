@@ -31,26 +31,44 @@ public class Cadastro {
         this.estado = estado;
     }
 
+    /**
+     * @return getter do id.
+     */
     public String getId() {
         return id;
     }
 
+    /**
+     * @return getter da descrição.
+     */
     public String getDescricao() {
         return descricao;
     }
 
+    /**
+     * @return getter do valor.
+     */
     public float getValor() {
         return valor;
     }
 
+    /**
+     * @return getter da forma de pagamento.
+     */
     public FormaPagamento getFormaPagamento() {
         return formaPagamento;
     }
 
+    /**
+     * @return getter do estado do pedido.
+     */
     public Estado getEstado() {
         return estado;
     }
 
+    /**
+     * @param estado setter do estado.
+     */
     public void setEstado(Estado estado) {
         this.estado = estado;
     }
