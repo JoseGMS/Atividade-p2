@@ -6,7 +6,7 @@ import br.maua.enumerates.FormaPagamento;
 /** Classe responsavel por organizar novos pedidos cadastrados, é a base para a criação de uma lista de cadastro na classe de pedidos.
  * @author José Guilherme Martins dos Santos - josegms2000@gmail.com
  * @since 26/06/2020
- * @version 1.o
+ * @version 1.0
  */
 
 public class Cadastro {

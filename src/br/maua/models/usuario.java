@@ -6,7 +6,7 @@ import br.maua.interfaces.Autenticar;
  * Classe onde ocorre a definição de usuario, como a pizzaria ainda não possui diferenciação de funcionarios por herenças, todos estão alocados aqui
  * @author José Guilherme Martins dos Santos - josegms2000@gmail.com
  * @since 26/06/2020
- * @version 1.o
+ * @version 1.0
  */
 
 public class usuario implements Autenticar {

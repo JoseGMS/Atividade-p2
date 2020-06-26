@@ -6,7 +6,7 @@ import br.maua.enumerates.FormaPagamento;
 /**Classe responsavel por gerar novos pedidos e também a lista de pedidos.
  * @author José Guilherme Martins dos Santos - josegms2000@gmail.com
  * @since 26/06/2020
- * @version 1.o
+ * @version 1.0
  */
 
 import java.util.ArrayList;
@@ -83,6 +83,7 @@ public class Pedido {
      * Função responvel por alterar estado de pedidos já feitos anteriormente.<br>
      *     Pergunta ao funcionario qual o id do pedido que deseja alterar e por qual estado e executada a troca.
      *     A troca e feita por meio de uma varredura da lista comparando o id digitado pelo funcionario com os ids cadastrados.
+     *     Informa se a mundança foi feita ou se o id não foi encontrado.
      */
     public String alterarPedidos(){
         if(Cadastros.isEmpty()){
