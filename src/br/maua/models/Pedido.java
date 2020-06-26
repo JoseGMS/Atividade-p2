@@ -5,13 +5,20 @@ import br.maua.enumerates.FormaPagamento;
 import sun.security.x509.InvalidityDateExtension;
 
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Pedido {
     ArrayList<Cadastro> myCadastro = new ArrayList<>();
     private Estado estadoAtual;
     private FormaPagamento pagamentoAtual;
-
+    private String geradorId(){
+        Random random = new Random();
+        String idGerado = "";
+        for (int i = 0; i < 3; i++)
+            idGerado += random.nextInt(10);
+            return idGerado;
+    }
     public void novaVenda() {
         Scanner des = new Scanner(System.in);
         System.out.println("Digite a descrição: ");
@@ -39,7 +46,7 @@ public class Pedido {
                 pagamentoAtual = FormaPagamento.VALE_REFEICAO;
                 break;
         }
-        myCadastro.add(new Cadastro("1", descricao, valor, pagamentoAtual, Estado.REALIZADO));
+        myCadastro.add(new Cadastro(geradorId(), descricao, valor, pagamentoAtual, Estado.REALIZADO));
     }
 
     public void mostraPedidos(){
