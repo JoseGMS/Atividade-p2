@@ -10,6 +10,7 @@ import java.util.Scanner;
 public class Pedido {
     ArrayList<Cadastro> myCadastro = new ArrayList<>();
     private Estado estadoAtual;
+    private FormaPagamento pagamentoAtual;
 
     public void novaVenda() {
         Scanner des = new Scanner(System.in);
@@ -23,21 +24,22 @@ public class Pedido {
         int numeroForm = form.nextInt();
         switch (numeroForm){
             case 1:
-                myCadastro.add(new Cadastro("1", descricao, valor, FormaPagamento.DINHEIRO, Estado.REALIZADO));
+                pagamentoAtual = FormaPagamento.DINHEIRO;
                 break;
             case 2:
-                myCadastro.add(new Cadastro("1", descricao, valor, FormaPagamento.DEBITO, Estado.REALIZADO));
+                pagamentoAtual = FormaPagamento.DEBITO;
                 break;
             case 3:
-                myCadastro.add(new Cadastro("1", descricao, valor, FormaPagamento.CREDITO, Estado.REALIZADO));
+                pagamentoAtual = FormaPagamento.CREDITO;
                 break;
             case 4:
-                myCadastro.add(new Cadastro("1", descricao, valor, FormaPagamento.VALE_ALIMENTACAO, Estado.REALIZADO));
+                pagamentoAtual = FormaPagamento.VALE_ALIMENTACAO;
                 break;
             case 5:
-                myCadastro.add(new Cadastro("1", descricao, valor, FormaPagamento.VALE_REFEICAO, Estado.REALIZADO));
+                pagamentoAtual = FormaPagamento.VALE_REFEICAO;
                 break;
         }
+        myCadastro.add(new Cadastro("1", descricao, valor, pagamentoAtual, Estado.REALIZADO));
     }
 
     public void mostraPedidos(){
