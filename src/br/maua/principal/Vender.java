@@ -1,10 +1,22 @@
-package br.maua.models;
+package br.maua.principal;
 
 import br.maua.interfaces.Autenticar;
+import br.maua.models.Pedido;
+import br.maua.models.usuario;
 
 import java.util.Scanner;
 
+/**
+ * Classe principal do programa,é aqui onde é centro das vendas, nela está presente o loop que ocorre para o cliente adicionar novos pedidos, ver os pedidos atuais ou alterar os existentes.
+ * @author José Guilherme Martins dos Santos - josegms2000@gmail.com
+ * @since 26/06/2020
+ * @version 1.o
+ */
+
 public class Vender {
+    /**
+     * Função que é chamada pela classe main, essa a função principal do programa, aqui é onde ocorre maior parte da intereção com os funcionarios da pizzaria.
+     */
     public static void run() {
         Autenticar funcionario = new usuario();
         Scanner ler = new Scanner(System.in);
