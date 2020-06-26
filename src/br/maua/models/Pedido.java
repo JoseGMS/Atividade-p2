@@ -14,7 +14,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Pedido {
-    ArrayList<Cadastro> novoCadastro = new ArrayList<>();
+    ArrayList<Cadastro> Cadastros = new ArrayList<>();
     private Estado estadoAtual;
 
     private FormaPagamento pagamentoAtual;
@@ -62,7 +62,7 @@ public class Pedido {
                 pagamentoAtual = FormaPagamento.VALE_REFEICAO;
                 break;
         }
-        novoCadastro.add(new Cadastro(geradorId(), descricao, valor, pagamentoAtual, Estado.REALIZADO));
+        Cadastros.add(new Cadastro(geradorId(), descricao, valor, pagamentoAtual, Estado.REALIZADO));
     }
 
     /**
@@ -70,45 +70,55 @@ public class Pedido {
      *     for que percorre a lista de novos cadastro e print eles de forma organizada.
      */
     public void mostraPedidos(){
-        for (Cadastro pedido: novoCadastro)
+        if(Cadastros.isEmpty()){
+            System.out.println("\nAinda não foi feito nenhum pedido.\n");
+        }
+        for (Cadastro pedido: Cadastros)
             System.out.println(" -----------------------\nOs pedidos atuais são: \nId: " + pedido.getId() + "\nDescrição: " + pedido.getDescricao() + "\nValor: " + pedido.getValor() + "\nForma de Pagamento: " + pedido.getFormaPagamento() + "\nEstado: " + pedido.getEstado() + "\n-----------------------");
+
     }
+
 
     /**
      * Função responvel por alterar estado de pedidos já feitos anteriormente.<br>
      *     Pergunta ao funcionario qual o id do pedido que deseja alterar e por qual estado e executada a troca.
      *     A troca e feita por meio de uma varredura da lista comparando o id digitado pelo funcionario com os ids cadastrados.
      */
-    public void alterarPedidos(){
-        Scanner id1 = new Scanner(System.in);
-        System.out.println("Digite o id do pedido que deseja alterar: ");
-        String id = id1.nextLine();
-        Scanner est = new Scanner(System.in);
-        System.out.println("Para qual estado você deseja alterar o pedido\n 1 - Realizado\n 2 - Preparação\n 3 - Saiu para a entrega\n 4 - Entregue\n 5 - Devolvido ");
-        int estado = est.nextInt();
-        switch (estado){
-            case 1:
-                estadoAtual = Estado.REALIZADO;
-                break;
-            case 2:
-                estadoAtual = Estado.PREPARACAO;
-                break;
-            case 3:
-                estadoAtual = Estado.SAIU_PARA_ENTREGA;
-                break;
-            case 4:
-                estadoAtual = Estado.ENTREGUE;
-                break;
-            case 5:
-                estadoAtual = Estado.DEVOLVIDO;
-                break;
+    public String alterarPedidos(){
+        if(Cadastros.isEmpty()){
+            System.out.println("\nNenhum pedido foi feito ainda!\n");
         }
-
-        for (Cadastro pedido: novoCadastro) {
-            if(id.equals(pedido.getId())) {
-                pedido.setEstado(estadoAtual);
-                System.out.println("\nEstado do pedido alterado com sucesso!\n");
+        else {
+            Scanner id1 = new Scanner(System.in);
+            System.out.println("Digite o id do pedido que deseja alterar: ");
+            String id = id1.nextLine();
+            Scanner est = new Scanner(System.in);
+            System.out.println("Para qual estado você deseja alterar o pedido\n 1 - Realizado\n 2 - Preparação\n 3 - Saiu para a entrega\n 4 - Entregue\n 5 - Devolvido ");
+            int estado = est.nextInt();
+            switch (estado) {
+                case 1:
+                    estadoAtual = Estado.REALIZADO;
+                    break;
+                case 2:
+                    estadoAtual = Estado.PREPARACAO;
+                    break;
+                case 3:
+                    estadoAtual = Estado.SAIU_PARA_ENTREGA;
+                    break;
+                case 4:
+                    estadoAtual = Estado.ENTREGUE;
+                    break;
+                case 5:
+                    estadoAtual = Estado.DEVOLVIDO;
+                    break;
+            }
+            for (Cadastro pedido : Cadastros) {
+                if (id.equals(pedido.getId())) {
+                    pedido.setEstado(estadoAtual);
+                    return String.format("\nEstado alterado com sucesso!\n");
+                }
             }
         }
+        return String.format("\nId não encontrado!\n");
     }
 }

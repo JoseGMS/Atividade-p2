@@ -46,7 +46,7 @@ public class Vender {
                     System.out.println("Digite a senha: ");
                     int senha2 = lerSenha2.nextInt();
                     if(funcionario.autentica(senha2))
-                        pedido.alterarPedidos();
+                        System.out.println(pedido.alterarPedidos());
                     else
                         System.out.println("\nSenha incorreta!\n");
                     break;
