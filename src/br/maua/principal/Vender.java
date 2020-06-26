@@ -16,6 +16,8 @@ import java.util.Scanner;
 public class Vender {
     /**
      * Função que é chamada pela classe main, essa a função principal do programa, aqui é onde ocorre maior parte da intereção com os funcionarios da pizzaria.
+     *
+     *
      */
     public static void run() {
         Autenticar funcionario = new usuario();
