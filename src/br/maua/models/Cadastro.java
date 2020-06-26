@@ -18,39 +18,15 @@ public class Cadastro {
         this.estado = estado;
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
-    public void setValor(int valor) {
-        this.valor = valor;
-    }
-
-    public void setFormaPagamento(FormaPagamento formaPagamento) {
-        this.formaPagamento = formaPagamento;
-    }
-
-    public void setEstado(Estado estado) {
-        this.estado = estado;
-    }
-
     public String getId() {
         return id;
     }
 
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public int getValor() {
-        return valor;
-    }
-
-    public FormaPagamento getFormaPagamento() {
-        return formaPagamento;
-    }
-
     public Estado getEstado() {
         return estado;
+    }
+
+    public void setEstado(Estado estado) {
+        this.estado = estado;
     }
 }
