@@ -9,10 +9,10 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Pedido implements Autenticar {
+public class Pedido {
     ArrayList<Cadastro> myCadastro = new ArrayList<>();
     private Estado estadoAtual;
-    private int senha = 1234;
+
     private FormaPagamento pagamentoAtual;
     private String geradorId(){
         Random random = new Random();
@@ -85,13 +85,5 @@ public class Pedido implements Autenticar {
             if(id.equals(pedido.getId()))
             pedido.setEstado(estadoAtual);
         }
-    }
-
-    @Override
-    public boolean autentica(int senha) {
-        if(this.senha != senha){
-        return false;
-    }
-    return true;
     }
 }

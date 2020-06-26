@@ -1,14 +1,12 @@
 package br.maua.models;
 
-import br.maua.enumerates.Estado;
-import br.maua.enumerates.FormaPagamento;
 import br.maua.interfaces.Autenticar;
 
 import java.util.Scanner;
 
 public class Vender {
     public static void run() {
-        Autenticar funcionario = new Pedido();
+        Autenticar funcionario = new usuario();
         Scanner ler = new Scanner(System.in);
         int opcao;
         System.out.println("Pizzaria o Rato que Ri\n 1 - Nova Venda\n 2 - Verificar pedidos\n 3 - Alterar pedidos\n 0 - Sair");
