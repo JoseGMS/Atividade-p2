@@ -2,15 +2,17 @@ package br.maua.models;
 
 import br.maua.enumerates.Estado;
 import br.maua.enumerates.FormaPagamento;
-import sun.security.x509.InvalidityDateExtension;
+import br.maua.interfaces.Autenticar;
+
 
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Pedido {
+public class Pedido implements Autenticar {
     ArrayList<Cadastro> myCadastro = new ArrayList<>();
     private Estado estadoAtual;
+    private int senha = 1234;
     private FormaPagamento pagamentoAtual;
     private String geradorId(){
         Random random = new Random();
@@ -85,4 +87,11 @@ public class Pedido {
         }
     }
 
+    @Override
+    public boolean autentica(int senha) {
+        if(this.senha != senha){
+        return false;
+    }
+    return true;
+    }
 }
